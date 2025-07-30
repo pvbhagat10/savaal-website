@@ -232,7 +232,7 @@ const HeroSection = () => {
             // It starts at a base of 1.2 and increases by 0.8 over the scroll distance.
             // (1.2 + 0 * 0.8) = 1.2 (start)
             // (1.2 + 1 * 0.8) = 2.0 (end)
-            const scale = 1.2 + scrollProgress * 0.8; 
+            const scale = 1.2 + scrollProgress * 1; 
             setLogoScale(scale);
         };
 
@@ -241,7 +241,7 @@ const HeroSection = () => {
     }, [storyTexts.length]);
 
     return (
-        <div ref={heroRef} className="h-[300vh] relative">
+        <div ref={heroRef} className="h-[150vh] relative">
             <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-amber-50/50 overflow-hidden">
                 <div 
                     className="flex flex-col items-center justify-center text-center transition-transform duration-300 ease-out"
