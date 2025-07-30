@@ -131,11 +131,6 @@ const Navbar = () => {
                                     <Menu size={28} />
                                 </button>
                             </div>
-                            <nav className="hidden lg:flex items-center space-x-8">
-                                {navLinks.slice(0, 2).map(link => (
-                                    <a key={link} href="#" className="text-gray-600 hover:text-amber-800 font-medium transition-colors duration-300">{link}</a>
-                                ))}
-                            </nav>
                         </div>
 
                         {/* Center: Logo */}
@@ -147,11 +142,6 @@ const Navbar = () => {
 
                         {/* Right side: Nav links for desktop, Icons for all screens */}
                         <div className="flex-1 flex items-center justify-end">
-                            <nav className="hidden lg:flex items-center space-x-8">
-                                {navLinks.slice(2, 4).map(link => (
-                                    <a key={link} href="#" className="text-gray-600 hover:text-amber-800 font-medium transition-colors duration-300">{link}</a>
-                                ))}
-                            </nav>
                             <div className="flex items-center space-x-4 ml-0 lg:ml-8">
                                 <a href="#" className="text-gray-600 hover:text-amber-800"><Search size={22} /></a>
                                 <a href="#" className="text-gray-600 hover:text-amber-800 relative">
