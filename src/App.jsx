@@ -188,7 +188,7 @@ const Navbar = () => {
 };
 
 const HeroSection = () => {
-    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2067.PNG?alt=media&token=9d941106-85c1-4bce-9224-d0f123c9aac0";
+    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/Untitled%20design%20(3).png?alt=media&token=a871973c-1f85-4f14-9557-a0877b3d4caa";
     const heroRef = useRef(null);
     const [activeTextIndex, setActiveTextIndex] = useState(0);
     
@@ -241,7 +241,7 @@ const HeroSection = () => {
     }, [storyTexts.length]);
 
     return (
-        <div ref={heroRef} className="h-[150vh] relative">
+        <div ref={heroRef} className="h-[200vh] relative">
             <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-amber-50/50 overflow-hidden">
                 <div 
                     className="flex flex-col items-center justify-center text-center transition-transform duration-300 ease-out"
@@ -250,10 +250,9 @@ const HeroSection = () => {
                     <img src={logoUrl} alt="Saval Logo" className="h-32 md:h-48" />
                 </div>
                 
-                {/* Text position is kept lower to prevent overlap with the larger logo. */}
                 <div className="absolute top-1/2 mt-56 left-1/2 -translate-x-1/2 w-full px-4">
                     {storyTexts.map((text, index) => (
-                        <div 
+                        <div
                             key={index}
                             className={`transition-opacity duration-700 absolute w-full left-0 ${index === activeTextIndex ? 'opacity-100' : 'opacity-0'}`}
                         >
@@ -299,8 +298,13 @@ const PremiumProductSection = ({ title, products }) => (
             <div className="flex overflow-x-auto space-x-6 pb-4 no-scrollbar">
                 {products.map(p => (
                     <a href={buyUrl(p.name)} key={p.name} target="_blank" rel="noopener noreferrer" className="block group flex-shrink-0 w-52 md:w-60">
-                        <div className="overflow-hidden rounded-2xl bg-amber-50 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                            <img src={placeholderImgUrl(p.name)} alt={p.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                        {/* Changed aspect ratio from square to 4:3 to reduce height. */}
+                        <div className="aspect-[5/3] overflow-hidden rounded-2xl bg-amber-50 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                            <img 
+                                src={placeholderImgUrl(p.name)} 
+                                alt={p.name} 
+                                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
+                            />
                         </div>
                         <h3 className="mt-4 text-lg font-semibold text-gray-800 text-center">{p.name}</h3>
                     </a>
