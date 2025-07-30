@@ -102,7 +102,7 @@ const TopBar = () => (
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const navLinks = ["Shop All", "Gifting", "About Us", "Contact"];
-    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2067.PNG?alt=media&token=9d941106-85c1-4bce-9224-d0f123c9aac0";
+    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2085.PNG?alt=media&token=0aa9da5d-c283-4b5a-acfa-1f8bd779116d";
     
     // Effect to lock body scroll when mobile menu is open
     useEffect(() => {
@@ -188,7 +188,7 @@ const Navbar = () => {
 };
 
 const HeroSection = () => {
-    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/Untitled%20design%20(3).png?alt=media&token=a871973c-1f85-4f14-9557-a0877b3d4caa";
+    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2085.PNG?alt=media&token=0aa9da5d-c283-4b5a-acfa-1f8bd779116d";
     const heroRef = useRef(null);
     const [activeTextIndex, setActiveTextIndex] = useState(0);
     
