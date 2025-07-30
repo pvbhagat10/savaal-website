@@ -102,7 +102,7 @@ const TopBar = () => (
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const navLinks = ["Shop All", "Gifting", "About Us", "Contact"];
-    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/70916321_no_white_bg.svg?alt=media&token=23855eb4-71cb-43a5-aea7-539c22b2f6cc";
+    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2067.PNG?alt=media&token=9d941106-85c1-4bce-9224-d0f123c9aac0";
     
     // Effect to lock body scroll when mobile menu is open
     useEffect(() => {
@@ -187,12 +187,13 @@ const Navbar = () => {
     );
 };
 
-// --- NEW DYNAMIC HERO SECTION ---
 const HeroSection = () => {
-    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/70916321_no_white_bg.svg?alt=media&token=23855eb4-71cb-43a5-aea7-539c22b2f6cc";
+    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2067.PNG?alt=media&token=9d941106-85c1-4bce-9224-d0f123c9aac0";
     const heroRef = useRef(null);
     const [activeTextIndex, setActiveTextIndex] = useState(0);
-    const [logoScale, setLogoScale] = useState(0.7); // Start small
+    
+    // CHANGE 1: The initial scale is now 1.2 to match the start of the animation.
+    const [logoScale, setLogoScale] = useState(1.2); 
 
     const storyTexts = [
         {
@@ -217,16 +218,21 @@ const HeroSection = () => {
         const handleScroll = () => {
             if (!heroRef.current) return;
             const { top, height } = heroRef.current.getBoundingClientRect();
+            
+            // Calculate scroll progress from 0 (top) to 1 (bottom) of the component
             const scrollableHeight = height - window.innerHeight;
             let scrollProgress = (-top / scrollableHeight);
             scrollProgress = Math.max(0, Math.min(1, scrollProgress));
 
-            // Text animation logic
+            // Text animation logic remains the same
             const textIndex = Math.floor(scrollProgress * storyTexts.length);
             setActiveTextIndex(Math.min(textIndex, storyTexts.length - 1));
 
-            // New Logo animation logic - Grow from small to full size
-            const scale = 0.7 + scrollProgress * 0.3; // Starts at 0.7, ends at 1
+            // CHANGE 2: The new scaling formula.
+            // It starts at a base of 1.2 and increases by 0.8 over the scroll distance.
+            // (1.2 + 0 * 0.8) = 1.2 (start)
+            // (1.2 + 1 * 0.8) = 2.0 (end)
+            const scale = 1.2 + scrollProgress * 0.8; 
             setLogoScale(scale);
         };
 
@@ -244,7 +250,8 @@ const HeroSection = () => {
                     <img src={logoUrl} alt="Saval Logo" className="h-32 md:h-48" />
                 </div>
                 
-                <div className="absolute top-1/2 mt-24 left-1/2 -translate-x-1/2 w-full px-4">
+                {/* Text position is kept lower to prevent overlap with the larger logo. */}
+                <div className="absolute top-1/2 mt-56 left-1/2 -translate-x-1/2 w-full px-4">
                     {storyTexts.map((text, index) => (
                         <div 
                             key={index}
