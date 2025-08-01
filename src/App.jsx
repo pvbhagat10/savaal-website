@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import  img1 from './images/flavoured_dates.png';
 import { Search, ShoppingBag, Menu, X, Leaf, Award, Truck, Phone, MapPin, Mail } from 'lucide-react';
 
 // --- Corrected and Expanded Data for Products ---
@@ -28,11 +29,11 @@ const productData = {
     { name: 'Macadamia Nuts' }, { name: 'Brazil Nuts' }, { name: 'Hazelnuts' }, { name: 'Pine Nuts (Chilgoza)' }, { name: 'Dried Apricots' }, { name: 'Dried Prunes' }, { name: 'Dried Cranberries' }, { name: 'Dried Blueberries' }, { name: 'Black Currants' }, { name: 'Goji Berries' },
   ],
   flavored: [
-    { name: 'Flavored Almonds', flavors: ['Chocolate', 'Rose', 'Kesar', 'Masala', 'Honey'], image: {logo} },
-    { name: 'Flavored Cashews', flavors: ['Peri Peri', 'Cheese', 'Masala', 'Chocolate'], image: '/images/flavoured_dates.png' },
-    { name: 'Flavored Raisins', flavors: ['Pan', 'Strawberry', 'Kesar', 'Mango'], image: '/images/flavoured_dates.png' },
-    { name: 'Flavored Figs', flavors: ['Rose-infused', 'Honey-dipped'], image: '/images/flavoured_dates.png' },
-    { name: 'Flavored Dates', flavors: ['Stuffed with Almonds', 'Coconut', 'Chocolate-coated'], image: '/images/flavoured_dates.png' },
+    { name: 'Flavored Almonds', flavors: ['Chocolate', 'Rose', 'Kesar', 'Masala', 'Honey'], image: {img1} },
+    { name: 'Flavored Cashews', flavors: ['Peri Peri', 'Cheese', 'Masala', 'Chocolate'], image: {img1} },
+    { name: 'Flavored Raisins', flavors: ['Pan', 'Strawberry', 'Kesar', 'Mango'], image: {img1} },
+    { name: 'Flavored Figs', flavors: ['Rose-infused', 'Honey-dipped'], image:  {img1}  },
+    { name: 'Flavored Dates', flavors: ['Stuffed with Almonds', 'Coconut', 'Chocolate-coated'], image:  {img1}  },
   ],
   seedsAndMixes: [
     { name: 'Sunflower Seeds' }, { name: 'Pumpkin Seeds' }, { name: 'Chia Seeds' }, { name: 'Flax Seeds' }, { name: 'Muskmelon Seeds' }, { name: 'Watermelon Seeds' }, { name: 'Trail Mix' }, { name: 'Muesli' },
@@ -317,7 +318,6 @@ const FlavoredProductSection = ({ title, products }) => (
             <div className="flex overflow-x-auto space-x-8 pb-4 no-scrollbar">
                 {products.map(p => (
                     <div key={p.name} className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col flex-shrink-0 w-80 md:w-96">
-                        {/* --- THIS IS THE CORRECTED LINE --- */}
                         <img src={p.image} alt={p.name} className="w-full h-48 object-cover"/>
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">{p.name}</h3>
