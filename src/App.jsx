@@ -1,11 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
-import  img1 from './images/flavoured_dates.png';
 import { Search, ShoppingBag, Menu, X, Leaf, Award, Truck, Phone, MapPin, Mail } from 'lucide-react';
 import flavoured_dates from "./assets/images/flavoured_dates.png";
 import flavoured_cashew from "./assets/images/flavoured_cashew.png";
 import flavoured_almonds from "./assets/images/flavoured_almonds.png";
 import flavoured_figs from "./assets/images/flavoured_figs.png";
 import flavoured_raisins from "./assets/images/flavoured_raisins.png";
+import premium_brazil_nuts from "./assets/images/premium_brazil_nuts.png";
+import premium_macadamianuts from "./assets/images/premium_macadamianuts.png";
+import premium_hazelnuts from "./assets/images/premium_hazelnuts.png";
+import single_almonds from "./assets/images/single_almonds.png";
+import premium_prunes from "./assets/images/premium_prunes.png";
+import premium_apricots from "./assets/images/premium_apricots.png";
+import premium_cranberries from "./assets/images/premium_cranberries.png";
+import premium_pinenuts from "./assets/images/premium_pinenuts.png";
+import single_cashew from "./assets/images/single_cashew.png";
+import single_walnut from "./assets/images/single_walnut.png";
+import premium_blueberries from "./assets/images/premium_blueberries.png";
+import single_raisin from "./assets/images/single_raisin.png";
+import premium_black_currant from "./assets/images/premium_black_currant.png";
+import premium_goji_berries from "./assets/images/premium_goji_berries.png";
+import single_date from "./assets/images/single_date.png";
+import single_fig from "./assets/images/single_fig.png";
+import single_coconut from "./assets/images/single_coconut.png";
+import single_pistachio from "./assets/images/single_pistachio.png";
+import logo from "./assets/images/saval_logo.png";
+import name_logo from "./assets/images/saval_name_logo.png";
 
 // --- Corrected and Expanded Data for Products ---
 const FacebookIcon = (props) => (
@@ -28,10 +47,26 @@ const TwitterIcon = (props) => (
 
 const productData = {
   basic: [
-    { name: 'Almonds' }, { name: 'Cashew Nuts' }, { name: 'Walnuts' }, { name: 'Raisins' }, { name: 'Pistachios' }, { name: 'Dates (Khajoor)' }, { name: 'Figs (Dried)' }, { name: 'Coconut Slices' }
+    { name: 'Almonds', image: single_almonds }, 
+    { name: 'Cashew Nuts', image: single_cashew  },
+     { name: 'Walnuts', image: single_walnut  },
+     { name: 'Raisins', image: single_raisin  },
+     { name: 'Pistachios', image: single_pistachio  },
+     { name: 'Dates (Khajoor)', image: single_date  },
+     { name: 'Figs (Dried)', image: single_fig  },
+     { name: 'Coconut Slices', image: single_coconut  }
   ],
   premium: [
-    { name: 'Macadamia Nuts' }, { name: 'Brazil Nuts' }, { name: 'Hazelnuts' }, { name: 'Pine Nuts (Chilgoza)' }, { name: 'Dried Apricots' }, { name: 'Dried Prunes' }, { name: 'Dried Cranberries' }, { name: 'Dried Blueberries' }, { name: 'Black Currants' }, { name: 'Goji Berries' },
+    { name: 'Macadamia Nuts', image: premium_macadamianuts },
+     { name: 'Brazil Nuts', image: premium_brazil_nuts  },
+     { name: 'Hazelnuts', image: premium_hazelnuts },
+     { name: 'Pine Nuts (Chilgoza)', image: premium_pinenuts },
+     { name: 'Dried Apricots', image: premium_apricots },
+     { name: 'Dried Prunes', image: premium_prunes },
+     { name: 'Dried Cranberries', image: premium_cranberries },
+     { name: 'Dried Blueberries', image: premium_blueberries },
+     { name: 'Black Currants', image: premium_black_currant  },
+     { name: 'Goji Berries', image: premium_goji_berries },
   ],
   flavored: [
     { name: 'Flavored Almonds', flavors: ['Chocolate', 'Rose', 'Kesar', 'Masala', 'Honey'], image: flavoured_almonds },
@@ -108,8 +143,7 @@ const TopBar = () => (
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const navLinks = ["Shop All", "Gifting", "About Us", "Contact"];
-    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2085.PNG?alt=media&token=0aa9da5d-c283-4b5a-acfa-1f8bd779116d";
-    
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -138,14 +172,12 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        {/* Center: Logo */}
                         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                             <a href="#">
-                                <img src={logoUrl} alt="Savaal Logo" className="h-12 md:h-14" />
+                                <img src={name_logo} alt="Savaal Logo" className="h-48 md:h-56" />
                             </a>
                         </div>
 
-                        {/* Right side: Nav links for desktop, Icons for all screens */}
                         <div className="flex-1 flex items-center justify-end">
                             <div className="flex items-center space-x-4 ml-0 lg:ml-8">
                                 <a href="#" className="text-gray-600 hover:text-amber-800"><Search size={22} /></a>
@@ -193,83 +225,80 @@ const Navbar = () => {
 };
 
 const HeroSection = () => {
-    const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2085.PNG?alt=media&token=0aa9da5d-c283-4b5a-acfa-1f8bd779116d";
-    const heroRef = useRef(null);
-    const [activeTextIndex, setActiveTextIndex] = useState(0);
+     const heroRef = useRef(null);
+     const [activeTextIndex, setActiveTextIndex] = useState(0);
     
-    const [logoScale, setLogoScale] = useState(1.2); 
+     const [logoScale, setLogoScale] = useState(1.2);
 
-    const storyTexts = [
-        {
-            title: "सहत का साहस, स्वाद का बल",
-            subtitle: "The Courage of Health, the Strength of Taste"
-        },
-        {
-            title: "Purity. Power. Prestige.",
-            subtitle: "Saval is not just a brand — it’s a promise to deliver purity-packed products that elevate your health."
-        },
-        {
-            title: "Our Vision",
-            subtitle: "To restore India’s ancient wellness traditions through powerful, natural superfoods."
-        },
-        {
-            title: "The Soul of Saval",
-            subtitle: "The logo reflects our soul: “Sah Bal” (सह बल) — the strength within."
-        }
-    ];
+     const storyTexts = [
+         {
+             title: "सहत का साहस, स्वाद का बल",
+             subtitle: "The Courage of Health, the Strength of Taste"
+         },
+         {
+             title: "Purity. Power. Prestige.",
+             subtitle: "Saval is not just a brand — it’s a promise to deliver purity-packed products that elevate your health."
+         },
+         {
+             title: "Our Vision",
+             subtitle: "To restore India’s ancient wellness traditions through powerful, natural superfoods."
+         },
+         {
+             title: "The Soul of Saval",
+             subtitle: "The logo reflects our soul: “Sah Bal” (सह बल) — the strength within."
+         }
+     ];
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!heroRef.current) return;
-            const { top, height } = heroRef.current.getBoundingClientRect();
+     useEffect(() => {
+         const handleScroll = () => {
+             if (!heroRef.current) return;
+             const { top, height } = heroRef.current.getBoundingClientRect();
             
-            const scrollableHeight = height - window.innerHeight;
-            let scrollProgress = (-top / scrollableHeight);
-            scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+             const scrollableHeight = height - window.innerHeight;
+             let scrollProgress = (-top / scrollableHeight);
+             scrollProgress = Math.max(0, Math.min(1, scrollProgress));
 
-            const textIndex = Math.floor(scrollProgress * storyTexts.length);
-            setActiveTextIndex(Math.min(textIndex, storyTexts.length - 1));
+             const textIndex = Math.floor(scrollProgress * storyTexts.length);
+             setActiveTextIndex(Math.min(textIndex, storyTexts.length - 1));
 
-            const scale = 1.2 + scrollProgress * 1; 
-            setLogoScale(scale);
-        };
+             const scale = 1.2 + scrollProgress * 1;
+             setLogoScale(scale);
+         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [storyTexts.length]);
+         window.addEventListener('scroll', handleScroll);
+         return () => window.removeEventListener('scroll', handleScroll);
+     }, [storyTexts.length]);
 
-    return (
-        <div ref={heroRef} className="h-[200vh] relative">
-            {/* --- CHANGE 1: Background color changed to dark gray --- */}
-            <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-zinc-900 overflow-hidden">
-                <div 
-                    className="flex flex-col items-center justify-center text-center transition-transform duration-300 ease-out"
-                    style={{ transform: `scale(${logoScale})` }}
-                >
-                    <img src={logoUrl} alt="Saval Logo" className="h-32 md:h-48" />
-                </div>
+     return (
+         <div ref={heroRef} className="h-[200vh] relative">
+             <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-amber-50/50 overflow-hidden">
+                 <div
+                     className="flex flex-col items-center justify-center text-center transition-transform duration-300 ease-out"
+                     style={{ transform: `scale(${logoScale})` }}
+                 >
+                    {/* --- THIS IS THE CORRECTED LINE --- */}
+                     <img src={logo} alt="Saval Logo" className="h-48 md:h-72" />
+                 </div>
                 
-                <div className="absolute top-1/2 mt-56 left-1/2 -translate-x-1/2 w-full px-4">
-                    {storyTexts.map((text, index) => (
-                        <div
-                            key={index}
-                            className={`transition-opacity duration-700 absolute w-full left-0 ${index === activeTextIndex ? 'opacity-100' : 'opacity-0'}`}
-                        >
-                            {/* --- CHANGE 2: Title text color updated for contrast --- */}
-                            <h2 className="text-3xl md:text-4xl font-bold text-amber-100 mb-2 text-center" style={{ fontFamily: 'serif' }}>
-                                {text.title}
-                            </h2>
-                            {/* --- CHANGE 3: Subtitle text color updated for contrast --- */}
-                            <p className="text-base md:text-lg text-gray-300 text-center max-w-2xl mx-auto">
-                                {text.subtitle}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
+                 <div className="absolute top-1/2 mt-56 left-1/2 -translate-x-1/2 w-full px-4">
+                     {storyTexts.map((text, index) => (
+                         <div
+                             key={index}
+                             className={`transition-opacity duration-700 absolute w-full left-0 ${index === activeTextIndex ? 'opacity-100' : 'opacity-0'}`}
+                         >
+                             <h2 className="text-3xl md:text-4xl font-bold text-amber-900 mb-2 text-center" style={{ fontFamily: 'serif' }}>
+                                 {text.title}
+                             </h2>
+                             <p className="text-base md:text-lg text-gray-700 text-center max-w-2xl mx-auto">
+                                 {text.subtitle}
+                             </p>
+                         </div>
+                     ))}
+                 </div>
+             </div>
+         </div>
+     );
+ };
 
 // --- DYNAMIC SECTIONS WITH HORIZONTAL SCROLL ---
 
@@ -281,7 +310,7 @@ const EssentialsSection = ({ title, products }) => (
                 {products.map(p => (
                     <a href={buyUrl(p.name)} key={p.name} target="_blank" rel="noopener noreferrer" className="block group text-center flex-shrink-0 w-28 md:w-32">
                         <div className="aspect-square bg-amber-100 rounded-full flex items-center justify-center p-2 overflow-hidden shadow-inner transform group-hover:-translate-y-2 transition-transform duration-300">
-                           <img src={placeholderImgUrl(p.name, true)} alt={p.name} className="w-full h-full object-cover rounded-full" />
+                           <img src={p.image} alt={p.name} className="w-full h-full object-cover rounded-full" />
                         </div>
                         <h3 className="mt-4 font-semibold text-gray-700 text-sm md:text-base">{p.name}</h3>
                     </a>
@@ -302,7 +331,7 @@ const PremiumProductSection = ({ title, products }) => (
                         {/* Changed aspect ratio from square to 4:3 to reduce height. */}
                         <div className="aspect-[5/3] overflow-hidden rounded-2xl bg-amber-50 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                             <img 
-                                src={placeholderImgUrl(p.name)} 
+                                src={p.image}
                                 alt={p.name} 
                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
                             />
@@ -372,9 +401,9 @@ const Footer = () => (
     <footer className="bg-amber-900 text-white">
         <div className="max-w-7xl mx-auto pt-12 pb-8 px-4 sm:px-6 lg:px-8">
             
-            {/* Brand Section (Top) */}
+            {/* --- MODIFIED BRAND SECTION (Top) --- */}
             <div className="mb-12">
-                <h3 className="text-2xl font-bold text-white mb-4" style={{fontFamily: 'serif'}}>SAVAAL</h3>
+                <img src={name_logo} alt="Savaal Logo" className="h-60 md:h-72 mb-4" />
                 <p className="text-amber-200 text-sm leading-relaxed">Discover nature's finest delicacies. We bring you premium quality dry fruits, sourced with care and delivered with love.</p>
             </div>
 
@@ -418,7 +447,6 @@ const Footer = () => (
             <div className="mt-16 border-t border-amber-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-8">
                 <p className="text-amber-300 text-sm text-center md:text-left order-2 md:order-1">&copy; {new Date().getFullYear()} Savaal Foods. All Rights Reserved.</p>
                 
-
                 <div className="flex space-x-5 items-center order-3">
                     <a href="#" aria-label="Facebook" className="text-amber-300 hover:text-white transition-all duration-300 transform hover:-translate-y-0.5"><FacebookIcon className="h-6 w-6" /></a>
                     <a href="#" aria-label="Instagram" className="text-amber-300 hover:text-white transition-all duration-300 transform hover:-translate-y-0.5"><InstagramIcon className="h-6 w-6" /></a>
@@ -427,7 +455,7 @@ const Footer = () => (
             </div>
         </div>
     </footer>
-);
+);c:\Users\prasa\Downloads\name_logo_svg.svg
 
 // --- Main App Component ---
 export default function App() {
