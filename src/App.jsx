@@ -28,11 +28,11 @@ const productData = {
     { name: 'Macadamia Nuts' }, { name: 'Brazil Nuts' }, { name: 'Hazelnuts' }, { name: 'Pine Nuts (Chilgoza)' }, { name: 'Dried Apricots' }, { name: 'Dried Prunes' }, { name: 'Dried Cranberries' }, { name: 'Dried Blueberries' }, { name: 'Black Currants' }, { name: 'Goji Berries' },
   ],
   flavored: [
-    { name: 'Flavored Almonds', flavors: ['Chocolate', 'Rose', 'Kesar', 'Masala', 'Honey'] },
-    { name: 'Flavored Cashews', flavors: ['Peri Peri', 'Cheese', 'Masala', 'Chocolate'] },
-    { name: 'Flavored Raisins', flavors: ['Pan', 'Strawberry', 'Kesar', 'Mango'] },
-    { name: 'Flavored Figs', flavors: ['Rose-infused', 'Honey-dipped'] },
-    { name: 'Flavored Dates', flavors: ['Stuffed with Almonds', 'Coconut', 'Chocolate-coated'] },
+    { name: 'Flavored Almonds', flavors: ['Chocolate', 'Rose', 'Kesar', 'Masala', 'Honey'], image: {logo} },
+    { name: 'Flavored Cashews', flavors: ['Peri Peri', 'Cheese', 'Masala', 'Chocolate'], image: '/images/flavoured_dates.png' },
+    { name: 'Flavored Raisins', flavors: ['Pan', 'Strawberry', 'Kesar', 'Mango'], image: '/images/flavoured_dates.png' },
+    { name: 'Flavored Figs', flavors: ['Rose-infused', 'Honey-dipped'], image: '/images/flavoured_dates.png' },
+    { name: 'Flavored Dates', flavors: ['Stuffed with Almonds', 'Coconut', 'Chocolate-coated'], image: '/images/flavoured_dates.png' },
   ],
   seedsAndMixes: [
     { name: 'Sunflower Seeds' }, { name: 'Pumpkin Seeds' }, { name: 'Chia Seeds' }, { name: 'Flax Seeds' }, { name: 'Muskmelon Seeds' }, { name: 'Watermelon Seeds' }, { name: 'Trail Mix' }, { name: 'Muesli' },
@@ -104,7 +104,6 @@ const Navbar = () => {
     const navLinks = ["Shop All", "Gifting", "About Us", "Contact"];
     const logoUrl = "https://firebasestorage.googleapis.com/v0/b/insta-clone-2024.appspot.com/o/IMG_2085.PNG?alt=media&token=0aa9da5d-c283-4b5a-acfa-1f8bd779116d";
     
-    // Effect to lock body scroll when mobile menu is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -192,7 +191,6 @@ const HeroSection = () => {
     const heroRef = useRef(null);
     const [activeTextIndex, setActiveTextIndex] = useState(0);
     
-    // CHANGE 1: The initial scale is now 1.2 to match the start of the animation.
     const [logoScale, setLogoScale] = useState(1.2); 
 
     const storyTexts = [
@@ -219,19 +217,13 @@ const HeroSection = () => {
             if (!heroRef.current) return;
             const { top, height } = heroRef.current.getBoundingClientRect();
             
-            // Calculate scroll progress from 0 (top) to 1 (bottom) of the component
             const scrollableHeight = height - window.innerHeight;
             let scrollProgress = (-top / scrollableHeight);
             scrollProgress = Math.max(0, Math.min(1, scrollProgress));
 
-            // Text animation logic remains the same
             const textIndex = Math.floor(scrollProgress * storyTexts.length);
             setActiveTextIndex(Math.min(textIndex, storyTexts.length - 1));
 
-            // CHANGE 2: The new scaling formula.
-            // It starts at a base of 1.2 and increases by 0.8 over the scroll distance.
-            // (1.2 + 0 * 0.8) = 1.2 (start)
-            // (1.2 + 1 * 0.8) = 2.0 (end)
             const scale = 1.2 + scrollProgress * 1; 
             setLogoScale(scale);
         };
@@ -242,7 +234,8 @@ const HeroSection = () => {
 
     return (
         <div ref={heroRef} className="h-[200vh] relative">
-            <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-amber-50/50 overflow-hidden">
+            {/* --- CHANGE 1: Background color changed to dark gray --- */}
+            <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-zinc-900 overflow-hidden">
                 <div 
                     className="flex flex-col items-center justify-center text-center transition-transform duration-300 ease-out"
                     style={{ transform: `scale(${logoScale})` }}
@@ -256,10 +249,12 @@ const HeroSection = () => {
                             key={index}
                             className={`transition-opacity duration-700 absolute w-full left-0 ${index === activeTextIndex ? 'opacity-100' : 'opacity-0'}`}
                         >
-                            <h2 className="text-3xl md:text-4xl font-bold text-amber-900 mb-2 text-center" style={{ fontFamily: 'serif' }}>
+                            {/* --- CHANGE 2: Title text color updated for contrast --- */}
+                            <h2 className="text-3xl md:text-4xl font-bold text-amber-100 mb-2 text-center" style={{ fontFamily: 'serif' }}>
                                 {text.title}
                             </h2>
-                            <p className="text-base md:text-lg text-gray-700 text-center max-w-2xl mx-auto">
+                            {/* --- CHANGE 3: Subtitle text color updated for contrast --- */}
+                            <p className="text-base md:text-lg text-gray-300 text-center max-w-2xl mx-auto">
                                 {text.subtitle}
                             </p>
                         </div>
@@ -322,7 +317,8 @@ const FlavoredProductSection = ({ title, products }) => (
             <div className="flex overflow-x-auto space-x-8 pb-4 no-scrollbar">
                 {products.map(p => (
                     <div key={p.name} className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src={placeholderImgUrl(p.name)} alt={p.name} className="w-full h-48 object-cover"/>
+                        {/* --- THIS IS THE CORRECTED LINE --- */}
+                        <img src={p.image} alt={p.name} className="w-full h-48 object-cover"/>
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">{p.name}</h3>
                             <div className="flex flex-wrap gap-2 mb-6">
