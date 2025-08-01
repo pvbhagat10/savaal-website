@@ -455,7 +455,7 @@ const Footer = () => (
             </div>
         </div>
     </footer>
-);c:\Users\prasa\Downloads\name_logo_svg.svg
+);
 
 // --- Main App Component ---
 export default function App() {
