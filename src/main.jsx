@@ -6,6 +6,7 @@ import Imgaf from './image.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Imgaf />
+    {/* <Imgaf /> */}
+    <App/>
   </StrictMode>
 );

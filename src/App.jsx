@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, ShoppingBag, Menu, X, Leaf, Award, Truck, Phone, MapPin, Mail } from 'lucide-react';
+import flavoured_dates from "./assets/images/flavoured_dates.png";
+import flavoured_cashew from "./assets/images/flavoured_cashew.png";
+import flavoured_almonds from "./assets/images/flavoured_almonds.png";
+import flavoured_figs from "./assets/images/flavoured_figs.png";
+import flavoured_raisins from "./assets/images/flavoured_raisins.png";
 
 // --- Corrected and Expanded Data for Products ---
 const FacebookIcon = (props) => (
@@ -28,11 +33,11 @@ const productData = {
     { name: 'Macadamia Nuts' }, { name: 'Brazil Nuts' }, { name: 'Hazelnuts' }, { name: 'Pine Nuts (Chilgoza)' }, { name: 'Dried Apricots' }, { name: 'Dried Prunes' }, { name: 'Dried Cranberries' }, { name: 'Dried Blueberries' }, { name: 'Black Currants' }, { name: 'Goji Berries' },
   ],
   flavored: [
-    { name: 'Flavored Almonds', flavors: ['Chocolate', 'Rose', 'Kesar', 'Masala', 'Honey'], image: {logo} },
-    { name: 'Flavored Cashews', flavors: ['Peri Peri', 'Cheese', 'Masala', 'Chocolate'], image: '/images/flavoured_dates.png' },
-    { name: 'Flavored Raisins', flavors: ['Pan', 'Strawberry', 'Kesar', 'Mango'], image: '/images/flavoured_dates.png' },
-    { name: 'Flavored Figs', flavors: ['Rose-infused', 'Honey-dipped'], image: '/images/flavoured_dates.png' },
-    { name: 'Flavored Dates', flavors: ['Stuffed with Almonds', 'Coconut', 'Chocolate-coated'], image: '/images/flavoured_dates.png' },
+    { name: 'Flavored Almonds', flavors: ['Chocolate', 'Rose', 'Kesar', 'Masala', 'Honey'], image: flavoured_almonds },
+    { name: 'Flavored Cashews', flavors: ['Peri Peri', 'Cheese', 'Masala', 'Chocolate'], image: flavoured_cashew },
+    { name: 'Flavored Raisins', flavors: ['Pan', 'Strawberry', 'Kesar', 'Mango'], image: flavoured_raisins },
+    { name: 'Flavored Figs', flavors: ['Rose-infused', 'Honey-dipped'], image: flavoured_figs },
+    { name: 'Flavored Dates', flavors: ['Stuffed with Almonds', 'Coconut', 'Chocolate-coated'], image: flavoured_dates },
   ],
   seedsAndMixes: [
     { name: 'Sunflower Seeds' }, { name: 'Pumpkin Seeds' }, { name: 'Chia Seeds' }, { name: 'Flax Seeds' }, { name: 'Muskmelon Seeds' }, { name: 'Watermelon Seeds' }, { name: 'Trail Mix' }, { name: 'Muesli' },
