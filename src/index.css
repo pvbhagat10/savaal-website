@@ -1,6 +1,1 @@
 @import "tailwindcss";
-
-@theme {
-  /* optional custom theme variables */
-  --color-custom-dark: #ff3737;
-}
